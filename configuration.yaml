@@ -1,0 +1,77 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+http: !include http_config.yaml
+
+# Text to speech
+tts:
+  - platform: google_translate
+    cache: true
+    cache_dir: /tmp/tts
+    time_memory: 300
+    base_url: https://homeyhomeforaminiminne.duckdns.org
+
+# Change the username,password and database name as required
+
+group: !include groups.yaml
+      
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+shell_command: !include shell_commands.yaml
+sensor: !include sensors.yaml
+recorder: !include recorder.yaml
+logger: !include logger.yaml
+
+light:
+  - platform: aarlo
+  - platform: decora_wifi
+    username: dan@dantidyman.me
+    password: !secret leviton_password
+
+device_tracker:
+  - platform: bluetooth_tracker
+
+# Arlo Config.YAML entry
+aarlo:
+    username: blazingpenguins@gmail.com
+    password: !secret arlo_password
+    refresh_devices_every: 2
+    stream_timeout: 120
+    tfa_source: imap
+    tfa_type: email
+    tfa_host: imap.gmail.com
+    tfa_username: blazingpenguins@gmail.com
+    tfa_password: !secret imap_gmail_password
+
+camera:
+  - platform: aarlo
+
+binary_sensor:
+  - platform: aarlo
+    monitored_conditions:
+    - motion
+    - sound
+    - connectivity
+
+switch:
+  - platform: aarlo
+    siren: True
+    all_sirens: True
+    snapshot: True
+    doorbell_silence: True
+    siren_volume: 1
+    siren_duration: 10
+
+alarm_control_panel:
+  - platform: aarlo
+    away_mode_name: armed
+    home_mode_name: home
+    trigger_time: 30
+    alarm_volume: 8
+
+browser_mod:

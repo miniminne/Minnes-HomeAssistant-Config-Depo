@@ -1,0 +1,73 @@
+  - platform: aarlo
+    monitored_conditions:
+    - total_cameras
+    - last_capture
+    - recent_activity
+    - captured_today
+    - battery_level
+    - signal_strength
+    - temperature
+    - humidity
+    - air_quality
+  - platform: average
+    name: Home temperature
+    unique_id: sensor.average_home_temperature
+    entities:
+      - sensor.office_temperature
+      - sensor.bedroom_temperature
+      - sensor.living_room_temperature
+      - sensor.dining_room_temperature
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_use_percent
+      - type: swap_use_percent
+      - type: network_in
+        arg: eth0
+      - type: network_out
+        arg: eth0
+      - type: ipv4_address
+        arg: eth0
+      - type: ipv6_address
+        arg: eth0
+      - type: processor_use
+      - type: processor_temperature
+  - platform: command_line
+    name: core_updates
+    command: 'curl http://supervisor/core/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
+    value_template: '{{ value_json.update_available }}'
+    scan_interval: 600
+    json_attributes:
+      - update_available
+      - latest_version
+      - installed_version
+
+  - platform: command_line
+    name: supervisor_updates
+    command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
+    value_template: '{{ value_json.update_available }}'
+    scan_interval: 600
+    json_attributes:
+      - update_available
+      - latest_version
+      - installed_version
+
+  - platform: command_line
+    name: os_updates
+    command: 'curl http://supervisor/os/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"latest_version":.data.version_latest,"installed_version":.data.version,"update_available":.data.update_available}'''
+    value_template: '{{ value_json.update_available }}'
+    scan_interval: 600
+    json_attributes:
+      - update_available
+      - latest_version
+      - installed_version
+  - platform: fail2ban
+    jails:
+      - ssh
+      - hass-iptable

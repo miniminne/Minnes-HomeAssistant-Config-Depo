@@ -1,0 +1,245 @@
+- id: '1642458808013'
+  name: Away from Home
+  entities:
+    cover.meross_garage_door:
+      transition_duration: 35
+      device_class: garage
+      friendly_name: Garage Door
+      supported_features: 3
+      state: closed
+    light.meross_dnd_mode:
+      supported_color_modes:
+      - onoff
+      device_class: DNDMode
+      friendly_name: Garage DND Mode
+      supported_features: 0
+      state: 'off'
+    alarm_control_panel.abode_alarm:
+      code_format:
+      changed_by:
+      code_arm_required: false
+      device_id: area_1
+      battery_backup: false
+      cellular_backup: false
+      attribution: Data provided by goabode.com
+      icon: mdi:security
+      friendly_name: Abode Alarm
+      supported_features: 3
+      state: disarmed
+    switch.juicepad:
+      friendly_name: Home Automation Trigger
+      state: 'on'
+    light.mirror_bathroom_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_brightness:
+      friendly_name: Bathroom Mirror Left
+      supported_features: 63
+      state: 'off'
+    light.bathroom_mirror_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_brightness:
+      friendly_name: Bathroom Mirror Right
+      supported_features: 63
+      state: 'off'
+    light.bathroom_recessed_light:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_brightness:
+      friendly_name: Bathroom Recessed Light
+      supported_features: 63
+      state: 'off'
+    light.bedroom_ceiling_light:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_brightness:
+      friendly_name: Bedroom Ceiling Light
+      supported_features: 63
+      state: 'off'
+    switch.desk_charger:
+      friendly_name: Lamp
+      state: 'off'
+    light.kitchen_island_chandelier:
+      supported_color_modes:
+      - brightness
+      device_id: '3'
+      zone_id: '2'
+      friendly_name: Kitchen Island
+      supported_features: 33
+      state: 'off'
+    light.kitchen_main_lights:
+      supported_color_modes:
+      - brightness
+      device_id: '2'
+      zone_id: '1'
+      friendly_name: Kitchen Main Lights
+      supported_features: 33
+      state: 'off'
+    lock.back_door:
+      friendly_name: Back Door Lock
+      state: locked
+    lock.front_door_lock:
+      friendly_name: Front Door Lock
+      state: locked
+    lock.garage_lock:
+      icon: mdi:lock
+      friendly_name: Garage Lock
+      state: locked
+    alarm_control_panel.aarlo_base_station:
+      code_format:
+      changed_by:
+      code_arm_required: true
+      attribution: Data provided by my.arlo.com
+      time_zone: America/Chicago
+      brand: Netgear Arlo
+      device_id: A2U2037FA05F3
+      model_id: VMB4540
+      friendly_name: Base Station
+      on_schedule: false
+      siren: false
+      icon: mdi:security
+      supported_features: 15
+      state: armed_away
+  icon: mdi:exit-run
+- id: '1645200792790'
+  name: Good Night
+  entities:
+    lock.back_door:
+      friendly_name: Back Door Lock
+      state: locked
+    lock.front_door_lock:
+      friendly_name: Front Door Lock
+      state: locked
+    cover.meross_garage_door:
+      transition_duration: 35
+      transition_target: open
+      transition_timeout: '2022-02-18 01:46:48.068302+00:00'
+      device_class: garage
+      friendly_name: Garage Door
+      supported_features: 3
+      state: closed
+    light.meross_dnd_mode:
+      supported_color_modes:
+      - onoff
+      device_class: DNDMode
+      friendly_name: Garage DND Mode
+      supported_features: 0
+      state: 'off'
+    lock.garage_lock:
+      icon: mdi:lock
+      friendly_name: Garage Lock
+      state: locked
+    light.kitchen_island_chandelier:
+      supported_color_modes:
+      - brightness
+      device_id: '3'
+      zone_id: '2'
+      friendly_name: Kitchen Island
+      supported_features: 33
+      state: 'off'
+    light.kitchen_main_lights:
+      supported_color_modes:
+      - brightness
+      device_id: '2'
+      zone_id: '1'
+      friendly_name: Kitchen Main Lights
+      supported_features: 33
+      state: 'off'
+    media_player.big_screen:
+      friendly_name: Big Screen
+      supported_features: 152461
+      state: 'off'
+    light.bathroom_lights_zha_group:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      off_brightness:
+      friendly_name: Bathroom Light Group
+      supported_features: 63
+      state: 'off'
+    light.basement_lights:
+      supported_color_modes:
+      - brightness
+      off_brightness:
+      friendly_name: Basement Lights
+      supported_features: 41
+      state: 'off'
+    alarm_control_panel.aarlo_base_station:
+      code_format:
+      changed_by:
+      code_arm_required: true
+      attribution: Data provided by my.arlo.com
+      time_zone: America/Chicago
+      brand: Netgear Arlo
+      device_id: A2U2037FA05F3
+      model_id: VMB4540
+      friendly_name: Base Station
+      on_schedule: false
+      siren: false
+      icon: mdi:security
+      supported_features: 15
+      state: armed_away
+  icon: mdi:shield-moon
+- id: '1645557958660'
+  name: Welcome Guests
+  entities:
+    light.front_porch:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: color_temp
+      brightness: 254
+      color_temp: 366
+      hs_color:
+      - 28.327
+      - 64.71
+      rgb_color:
+      - 255
+      - 167
+      - 89
+      xy_color:
+      - 0.524
+      - 0.387
+      off_brightness:
+      friendly_name: Front Porch Entrance Light
+      supported_features: 63
+      state: 'on'
+    light.back_door:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 254
+      off_brightness:
+      friendly_name: Backdoor Light
+      supported_features: 41
+      state: 'on'
+  icon: mdi:hand-wave

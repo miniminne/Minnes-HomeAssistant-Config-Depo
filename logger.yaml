@@ -1,0 +1,5 @@
+  default: info
+  logs:
+    homeassistant.core: fatal
+    aarlo: debug
+    homeassistant.components.http.ban: warning
